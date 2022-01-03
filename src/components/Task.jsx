@@ -8,6 +8,7 @@ import { Avatar, Button, Container } from '@material-ui/core';
 import DeleteSharpIcon from '@material-ui/icons/DeleteSharp';
 import { useContext } from 'react';
 import TaskContext from '../context/TaskContext';
+import EditIcon from '@material-ui/icons/Edit';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -47,7 +48,7 @@ time: {
 
 const Task = ({ item })  => {
   const classes = useStyles();
-  const { deleteTask } = useContext(TaskContext)
+  const { deleteTask, editTask } = useContext(TaskContext)
 
   // const [title, setTitle] = useState('design');
   // const [text, setText] = useState('Final design delivery');
@@ -76,6 +77,7 @@ const Task = ({ item })  => {
                 {item.time}
             </Typography>
             <DeleteSharpIcon color='secondary' fontSize='small' onClick={() => deleteTask(item.id) }/>
+            <EditIcon fontSize='small' onClick={() => editTask(item)} />
             </Container>          
         </Card>
   );

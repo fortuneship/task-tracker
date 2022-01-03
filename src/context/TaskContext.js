@@ -12,8 +12,32 @@ export const TaskProvider = ({ children }) => {
             title: 'Title from context',
             text: 'This is a text from context',
             time: '1:00am'
+        },
+        {
+            id: 2,
+            title: 'Title from context 2',
+            text: 'This is a text from context 2',
+            time: '2:00am'
+        },
+        {
+            id: 3,
+            title: 'Title from context 3',
+            text: 'This is a text from context 3',
+            time: '3:00am'
         }
     ])
+
+    const [taskEdit, setTaskEdit] = useState({
+        item: {},
+        edit: false,
+    })
+
+    const editTask = (item) => {
+        setTaskEdit({
+            item,
+            edit: true
+        })
+    }
 
     const addTask = (newTask) => {
         newTask.id = uuidv4()
@@ -27,7 +51,7 @@ export const TaskProvider = ({ children }) => {
         }
     }
 
-    return <TaskContext.Provider value={{ task, deleteTask, addTask }}>
+    return <TaskContext.Provider value={{ task, deleteTask, addTask, editTask }}>
         {children}
     </TaskContext.Provider>
 }
