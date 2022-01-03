@@ -1,13 +1,9 @@
 import React from 'react'
-import { v4 as uuidv4 } from 'uuid'
-import { Button, makeStyles  } from '@material-ui/core'
-import { useState } from 'react';
 import Header from '../components/Header';
-import DynamicValue from '../components/DynamicValue';
 import TaskList from '../components/TaskList';
-import TaskData from '../data/TaskData';
 import TaskStat from '../components/TaskStat';
 import TaskForm from '../components/TaskForm';
+import { TaskProvider } from '../context/TaskContext';
 
 /* 
   const useStyles = makeStyles((theme) => ({
@@ -25,34 +21,28 @@ import TaskForm from '../components/TaskForm';
  */
 
 const Home = () => {
-    const [task, setTask] = useState(TaskData);
+    //const [task, setTask] = useState(TaskData);
 
    // const classes = useStyles()
 
     // const handleClick = () => {
     //     console.log('Hello there!');
     // }
-    const addTask = (newTask) => {
-        newTask.id = uuidv4()
-        setTask([newTask, ...task])
-    }
+   
 
-    const deleteTask = (id) => {
-        if(window.confirm('Are you sure you want to delete')){
-
-            setTask(task.filter((item) => item.id !== id))
-        }
-    }
+    
 
     return (
+        <TaskProvider>
         <div>
             {/* <Button variant="contained" size="large" className={classes.button} onClick={handleClick} >Contained</Button> */}
             <Header/>
-            <TaskForm handleAdd={addTask}/>
-            <TaskStat task={task}/>
+            <TaskForm />
+            <TaskStat />
             {/* <DynamicValue /> */}
-            <TaskList task={task} handleDelete={deleteTask}/>
+            <TaskList />
         </div>
+        </TaskProvider>
     )
 }
 

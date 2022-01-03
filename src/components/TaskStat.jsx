@@ -1,8 +1,13 @@
 import { Typography } from '@material-ui/core'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
+import { useContext } from 'react';
+import TaskContext from '../context/TaskContext';
 
 
-const TaskStat = ({ task }) => {
+const TaskStat = () => {
+
+    const { task } = useContext(TaskContext)
+
     return (
         <div>
             <Typography style={{textAlign: 'center', marginTop: 10}}>
@@ -12,8 +17,8 @@ const TaskStat = ({ task }) => {
     )
 }
 
-TaskStat.prototype = {
-    task: PropTypes.array.isRequired,
-}
+// TaskStat.prototype = {
+//     task: PropTypes.array.isRequired,
+// }
 
 export default TaskStat

@@ -6,6 +6,8 @@ import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import { Avatar, Button, Container } from '@material-ui/core';
 import DeleteSharpIcon from '@material-ui/icons/DeleteSharp';
+import { useContext } from 'react';
+import TaskContext from '../context/TaskContext';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -43,8 +45,9 @@ time: {
 },
 }));
 
-const Task = ({ item, handleDelete })  => {
+const Task = ({ item })  => {
   const classes = useStyles();
+  const { deleteTask } = useContext(TaskContext)
 
   // const [title, setTitle] = useState('design');
   // const [text, setText] = useState('Final design delivery');
@@ -72,7 +75,7 @@ const Task = ({ item, handleDelete })  => {
             <Typography className={classes.time}>
                 {item.time}
             </Typography>
-            <DeleteSharpIcon color='secondary' fontSize='small' onClick={() => handleDelete(item.id) }/>
+            <DeleteSharpIcon color='secondary' fontSize='small' onClick={() => deleteTask(item.id) }/>
             </Container>          
         </Card>
   );
