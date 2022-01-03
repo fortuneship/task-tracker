@@ -1,6 +1,6 @@
 import { Box, Button, Card, TextField, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import TaskContext from '../context/TaskContext';
 
 const useStyles = makeStyles((theme) => ({
@@ -26,11 +26,18 @@ const useStyles = makeStyles((theme) => ({
 const TaskForm = () => {
     const classes = useStyles();
 
-    const { addTask } = useContext(TaskContext)
+    const { addTask, taskEdit, updateTask } = useContext(TaskContext)
 
     
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
+
+   useEffect(() => {
+      if(taskEdit.edit === true) {
+          setTitle(taskEdit.item.title)
+          setText(taskEdit.item.text)
+      }
+   }, [taskEdit])
     
    
     const handleClick = (e) => {
@@ -41,7 +48,14 @@ const TaskForm = () => {
                 title,
                 text
             }
-            addTask(newTask);
+
+            if (taskEdit.edit === true) {
+                updateTask(taskEdit.item.id, newTask)
+            }else{
+
+                addTask(newTask);
+                
+            }
             setTitle('');
             setText('');
         }

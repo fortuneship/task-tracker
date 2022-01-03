@@ -32,6 +32,10 @@ export const TaskProvider = ({ children }) => {
         edit: false,
     })
 
+    const updateTask = (id, updItem) => {
+        setTask(task.map((item) => item.id === id ? {...item, ...updItem} : item))
+    }
+
     const editTask = (item) => {
         setTaskEdit({
             item,
@@ -51,7 +55,7 @@ export const TaskProvider = ({ children }) => {
         }
     }
 
-    return <TaskContext.Provider value={{ task, deleteTask, addTask, editTask }}>
+    return <TaskContext.Provider value={{ task, taskEdit, deleteTask, addTask, editTask, updateTask }}>
         {children}
     </TaskContext.Provider>
 }
