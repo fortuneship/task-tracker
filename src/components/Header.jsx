@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   container: {
-    backgroundColor: 'green'
+    backgroundColor: '#e3f2fd'
   },
   title: {
     flexGrow: 1,

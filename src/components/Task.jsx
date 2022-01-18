@@ -1,10 +1,9 @@
 import React from 'react';
-import { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
-import { Avatar, Button, Container } from '@material-ui/core';
+import { Avatar, Container } from '@material-ui/core';
 import DeleteSharpIcon from '@material-ui/icons/DeleteSharp';
 import { useContext } from 'react';
 import TaskContext from '../context/TaskContext';
@@ -13,7 +12,7 @@ import EditIcon from '@material-ui/icons/Edit';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 345,
+    maxWidth: 500,
     display: 'flex',
     margin: 'auto', 
     marginTop: 20
@@ -22,11 +21,10 @@ const useStyles = makeStyles((theme) => ({
   container: {
     display: 'flex',
     justifyContent: 'space-between',
+    alignItems: 'center'
   },
   avatar: {
     backgroundColor: red[500],
-    alignItems: 'center',
-    marginTop: '10px',
   },
   detail: {
       margin: '10px'

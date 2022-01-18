@@ -1,4 +1,4 @@
-import { Box, Button, Card, TextField, Typography } from '@material-ui/core'
+import { Button, Card, TextField, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import { useState, useContext, useEffect } from 'react';
 import TaskContext from '../context/TaskContext';
@@ -43,7 +43,7 @@ const TaskForm = () => {
     const handleClick = (e) => {
         //console.log('click...')
         e.preventDefault();
-        if (title && text != ''){
+        if (title && text !== ''){
             const newTask = {
                 title,
                 text
